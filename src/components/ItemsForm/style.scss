@@ -1,0 +1,26 @@
+@import "@constants/colors";
+
+.items-form{
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+    width: 400px;
+    margin-top: 60px;
+
+    &:last-child{
+        .button{
+            margin-top: 15px;
+        }
+    }
+}
+
+.items-form__input-container{
+    display: flex;
+    flex-direction: column;
+    row-gap: 5px;
+}
+
+.input-container__label{
+    font-family: "Medium";
+    color: $medium-text;
+}
