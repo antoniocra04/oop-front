@@ -31,6 +31,7 @@
 		"eslint-plugin-react-refresh": "^0.4.5",
 		"husky": "^9.0.10",
 		"lint-staged": "^15.2.2",
+		"path": "^0.12.7",
 		"stylelint": "^16.2.1",
 		"stylelint-scss": "^6.1.0",
 		"typescript": "^5.2.2",
@@ -41,12 +42,12 @@
 			"pre-commit": "lint-staged"
 		}
 	},
-  "lint-staged": {
-    "*.{js, jsx,ts,tsx}": [
-      "eslint --quiet --fix"
-    ],
-    "*.{json,js,ts,jsx,tsx,html}": [
-      "prettier --write --ignore-unknown"
-    ]
-  }
+	"lint-staged": {
+		"*.{js, jsx,ts,tsx}": [
+			"eslint --quiet --fix"
+		],
+		"*.{json,js,ts,jsx,tsx,html}": [
+			"prettier --write --ignore-unknown"
+		]
+	}
 }
