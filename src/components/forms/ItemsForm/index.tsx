@@ -1,5 +1,5 @@
 import { Input } from "@ui/Input"
-import "./style.scss"
+import "../style.scss"
 import { useFormik } from "formik";
 import { Button } from "@ui/Button";
 
