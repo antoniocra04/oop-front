@@ -3,12 +3,11 @@ import { DownArrowIcon } from "../../icons/DownArrowIcon";
 import "./style.scss"
 import classNames from "classnames";
 
-interface DataCardProps{
-    data: {
-        name: string;
-        text: string;
-    }[]
+interface DataCardProps<T>{
+    data: T[];
 }
+
+
 
 export const DataCard: React.FC<DataCardProps> = ({data}) => {
     const [isOpen, setIsOpen] = useState(false)
@@ -24,8 +23,8 @@ export const DataCard: React.FC<DataCardProps> = ({data}) => {
                 {
                     data.map((field) => (
                         <div className="info__field">
-                            <p className="field__name">{field.name}:</p>
-                            <p className="field__text">{field.text}</p>
+                            <p className="field__name">{Object.entries(field)[0][1]}:</p>
+                            <p className="field__text">{Object.entries(field)[1][1]}</p>
                         </div>
                     ))
                 }

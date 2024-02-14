@@ -10,12 +10,31 @@ const tabs = [
     {title: "Customers", content: <CustomerForm/>}
 ]
 
+const data = [
+    [
+        {name: 'ssdf', text: 'sadfs'},
+        {name: 'ssdf', text: 'sadfs'},
+        {name: 'ssdf', text: 'sadfs'}
+    ],
+    [
+        {name: 'ssdf', text: 'sadfs'},
+        {name: 'ssdf', text: 'sadfs'},
+        {name: 'ssdf', text: 'sadfs'}
+    ],
+]
+
 export const MainPage: React.FC = () => {
     return(
         <PageLayout>
             <div className="main">
-                <Tabs onClick={() => {}} data={tabs}/>
-                <DataCard data={[{name: 'asdfas', text: 'asdfasdf'}, {name: 'asdfas', text: 'asdfasdf'}, {name: 'asdfas', text: 'asdfasdf'}, {name: 'asdfas', text: 'asdfasdf'}]} />
+                <div className="">
+                    <Tabs onClick={() => {}} data={tabs}/>
+                </div>
+                <div className="main__data-container">
+                    {data.map((card) => (
+                        <DataCard data={card}/>
+                    ))}
+                </div>
             </div>
         </PageLayout>
     )
