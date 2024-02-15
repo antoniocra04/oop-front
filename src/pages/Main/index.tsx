@@ -4,6 +4,8 @@ import { Tabs } from "@components/Tabs";
 import { ItemsForm } from "@components/forms/ItemsForm";
 import { CustomerForm } from "@components/forms/CustomerForm";
 import { DataCard } from "@components/DataCard";
+import { useQuery } from "@tanstack/react-query";
+import { getAllItems } from "@api/services/items";
 
 const tabs = [
     {title: "Items", content: <ItemsForm/>},
@@ -24,17 +26,25 @@ const data = [
 ]
 
 export const MainPage: React.FC = () => {
+    const items = useQuery({queryKey: ['items'], queryFn: getAllItems})
     return(
         <PageLayout>
             <div className="main">
                 <div className="">
                     <Tabs onClick={() => {}} data={tabs}/>
                 </div>
-                <div className="main__data-container">
-                    {data.map((card) => (
-                        <DataCard data={card}/>
-                    ))}
-                </div>
+                {
+                    items.isSuccess ?   
+
+                        <div className="main__data-container">
+                            {items.data.data.map((item) => (
+                                <DataCard data={item}/>
+                            ))}
+                        </div>
+
+                : ""
+                }
+
             </div>
         </PageLayout>
     )

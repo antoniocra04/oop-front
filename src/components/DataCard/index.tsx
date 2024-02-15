@@ -1,10 +1,10 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { DownArrowIcon } from "../../icons/DownArrowIcon";
 import "./style.scss"
 import classNames from "classnames";
 
-interface DataCardProps<T>{
-    data: T[];
+interface DataCardProps{
+    data: object;
 }
 
 
@@ -17,14 +17,18 @@ export const DataCard: React.FC<DataCardProps> = ({data}) => {
         '--open': isOpen
     })
 
+    useEffect(() => {
+        console.log(Object.entries(data))
+    }, [])
+
     return(
         <div style={isOpen ? {'height': `${35 + (Object.keys(data).length-1) * 24}px`} : {}} className={dataCardClass}>
             <div className="data-card__info">
                 {
-                    data.map((field) => (
+                    Object.entries(data).map((field) => (
                         <div className="info__field">
-                            <p className="field__name">{Object.entries(field)[0][1]}:</p>
-                            <p className="field__text">{Object.entries(field)[1][1]}</p>
+                            <p className="field__name">{field[0]}:</p>
+                            <p className="field__text">{field[1]}</p>
                         </div>
                     ))
                 }
