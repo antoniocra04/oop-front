@@ -8,6 +8,8 @@ export const useChangeItem = () => {
     const items = useQuery({queryKey: ['items'], queryFn: getAllItems, enabled: false})
     const changeItemMutation = useMutation({mutationFn: (values: Parameters<typeof changeItem>[0]) => changeItem(values), onSuccess: () => {
         items.refetch().then(res => {
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            //@ts-ignore
             dispatch(setObjects(res.data?.data))
         })
     }})

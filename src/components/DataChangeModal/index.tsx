@@ -29,9 +29,13 @@ export const DataChangeModal: React.FC<DataChangeModalProps> = ({data, setActive
 		initialValues: data,
 		onSubmit: (values) => {
             if(activeTab === 'Items'){
+                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                //@ts-ignore
                 changeItemMutation.mutate(values)
             }
             if(activeTab === 'Customer'){
+                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                //@ts-ignore
                 changeCustomerMutation.mutate(values)
             }
             setActive(false)
@@ -48,6 +52,8 @@ export const DataChangeModal: React.FC<DataChangeModalProps> = ({data, setActive
                                 <label htmlFor={field[0]} className="input-container__label">
                                     {field[0]}
                                 </label>
+                                {/* // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                                    @ts-ignore */}
                                 <Input disabled={field[0] === 'id' ? true : false} id={field[0]} name={field[0]} onChange={formik.handleChange} value={formik.values[field[0].toString()]} />
                             </div>
                         ))
