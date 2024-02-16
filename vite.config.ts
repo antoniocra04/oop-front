@@ -14,6 +14,7 @@ export default defineConfig({
 			'@api': path.resolve(__dirname, './src/api'),
 			'@hooks': path.resolve(__dirname, './src/hooks'),
 			'@forms': path.resolve(__dirname, './src/forms'),
+			$fonts: path.resolve('./assets/fonts')
 		},
 	},
 });
