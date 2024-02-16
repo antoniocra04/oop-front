@@ -1,53 +1,62 @@
-@import "@constants/colors";
+@import '@constants/colors';
 
-.data-card{
-    background-color: $primary-bg;
-    border-radius: 10px;
-    padding: 20px;
-    display: flex;
-    width: 290px;
-    justify-content: space-between;
-    align-items: start;
-    overflow: hidden;
-    height: 15px;
-    transition: all .3s ease-in-out;
+.data-card {
+	background-color: $primary-bg;
+	border-radius: 10px;
+	padding: 20px;
+	display: flex;
+	width: 290px;
+	justify-content: space-between;
+	align-items: start;
+	overflow: hidden;
+	height: 15px;
+	transition: all 0.3s ease-in-out;
 
-    svg{
-        width: 40px;
-        height: 40px;
-        color: $primary;
-        margin-top: -12px;
-        transition: transform .3s ease;
-    }
+	svg {
+		width: 40px;
+		height: 40px;
+		color: $primary;
+		margin-top: -12px;
+		transition: transform 0.3s ease;
+		cursor: pointer;
+	}
 }
 
-.data-card__info{
-    .info__field:first-child{
-        margin: -5px 0px 20px;
-    }
-    display: flex;
-    flex-direction: column;
-    align-items: start;
+.data-card__info {
+	.info__field:first-child {
+		margin: -5px 0px 20px;
+	}
+	display: flex;
+	flex-direction: column;
+	align-items: start;
 }
 
-.info__field{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    row-gap: 5px;
-    column-gap: 5px;
+.info__field {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	row-gap: 5px;
+	column-gap: 5px;
 }
 
-.field__name{
-    color: $primary;
-    margin: 0;
-    font-family: "Bold";
+.field__name {
+	color: $primary;
+	margin: 0;
+	font-family: 'Bold';
 }
 
-.field__text{
-    margin: 0;
+.field__text {
+	margin: 0;
 }
 
-.--open{
-    height: max-content;
+.--open {
+	height: max-content;
+}
+
+.data-card__change-button{
+	font-size: 12px;
+	color: $medium-text;
+	margin-top: 20px;
+	margin-bottom: 0;
+	cursor: pointer;
 }

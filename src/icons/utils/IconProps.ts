@@ -1,3 +1,3 @@
-import { ComponentPropsWithoutRef } from "react";
+import { ComponentPropsWithoutRef } from 'react';
 
-export interface IconProps extends ComponentPropsWithoutRef<"svg">{}
+export interface IconProps extends ComponentPropsWithoutRef<'svg'> {}
