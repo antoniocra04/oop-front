@@ -14,9 +14,15 @@ import { useChangeItem } from '@hooks/useChangeItem';
 import './style.scss';
 
 interface DataChangeModalProps{
+    /**
+     * Обьект содержащий поля обьекта.
+     */
     data: object;
-    setActive: React.Dispatch<React.SetStateAction<boolean>>;
 
+    /**
+     * Функция для изменения стейта активности окна.
+     */
+    setActive: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export const DataChangeModal: React.FC<DataChangeModalProps> = ({data, setActive}) => {
@@ -52,9 +58,13 @@ export const DataChangeModal: React.FC<DataChangeModalProps> = ({data, setActive
                                 <label htmlFor={field[0]} className="input-container__label">
                                     {field[0]}
                                 </label>
-                                {/* // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-                                    @ts-ignore */}
-                                <Input disabled={field[0] === 'id' ? true : false} id={field[0]} name={field[0]} onChange={formik.handleChange} value={formik.values[field[0].toString()]} />
+                                <Input 
+                                    disabled={field[0] === 'id'} 
+                                    id={field[0]} name={field[0]} 
+                                    onChange={formik.handleChange}
+                                    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                                    //@ts-ignore
+                                    value={formik.values[field[0].toString()]} />
                             </div>
                         ))
                     }

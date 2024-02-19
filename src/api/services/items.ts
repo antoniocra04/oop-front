@@ -1,9 +1,24 @@
 import { client } from '@api/client';
 
 export interface Item {
+	/**
+	 * Id.
+	 */
 	id: number;
+
+	/**
+	 * Имя продукта.
+	 */
 	name: string;
+
+	/**
+	 * Информация о продукте.
+	 */
 	info: string;
+
+	/**
+	 * Стоимость продукта.
+	 */
 	cost: number;
 }
 

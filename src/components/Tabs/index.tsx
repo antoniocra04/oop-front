@@ -2,7 +2,14 @@ import { useState } from 'react';
 import './style.scss';
 
 export interface Tab {
+	/**
+	 * Названия вкладки.
+	 */
 	title: string;
+
+	/**
+	 * Контент вкладки.
+	 */
 	content: React.ReactNode;
 }
 

@@ -8,6 +8,9 @@ import { DataChangeModal } from '@components/DataChangeModal';
 import './style.scss';
 
 interface DataCardProps {
+	/**
+    * Обьект содержащий поля обьекта.
+    */
 	data: object;
 }
 

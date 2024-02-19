@@ -1,8 +1,19 @@
 import { client } from '@api/client';
 
 export interface Customer {
+	/**
+	 * Id.
+	 */
 	id: number;
+
+	/**
+	 * Имя покупателя.
+	 */
 	fullname: string;
+
+	/**
+	 * Адресс покупателя.
+	 */
 	address: string;
 }
 
