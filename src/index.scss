@@ -1,0 +1,36 @@
+@font-face {
+	font-family: 'Regular';
+	src: url('$fonts/Montserrat-Regular.woff2') format("woff2");
+}
+
+@font-face {
+	font-family: 'Medium';
+	src: url('$fonts/Montserrat-Medium.woff2') format("woff2");
+}
+
+@font-face {
+	font-family: 'Bold';
+	src: url('$fonts/Montserrat-Bold.woff2') format("woff2");
+}
+
+@font-face {
+	font-family: 'ExtraBold';
+	src: url('$fonts/Montserrat-ExtraBold.woff2') format("woff2");
+}
+
+@font-face {
+	font-family: 'Black';
+	src: url('$fonts/Montserrat-Black.woff2') format("woff2");
+}
+
+:root {
+	font-family: 'Regular';
+	line-height: 1.5;
+	font-weight: 400;
+
+	font-synthesis: none;
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+

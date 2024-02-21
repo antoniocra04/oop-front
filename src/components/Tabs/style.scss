@@ -1,0 +1,30 @@
+@import '@constants/colors';
+
+.tabs {
+	display: flex;
+	width: min-content;
+	background-color: $light;
+	padding: 5px;
+	border-radius: 14px;
+	box-shadow: 13px 13px 29px #dfdfdf;
+}
+
+.tab {
+	background-color: $light;
+	color: $medium;
+	padding: 10px 16px;
+	border: none;
+	font-size: 14px;
+	border-radius: 14px;
+	transition: all 0.15s ease-out;
+	font-family: 'Bold';
+}
+
+.--active {
+	background-color: $primary-bg;
+	color: $primary;
+}
+
+.tab-content {
+	margin-top: 24px;
+}
