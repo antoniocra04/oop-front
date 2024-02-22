@@ -33,3 +33,7 @@ export const createItem = async (values: { name: string; info: string; cost: num
 export const changeItem = async (values: Item) => {
 	return await client.put<Item>(`Item/changeItem/${values.id}`, values)
 }
+
+export const deleteItem = async (id: number) => {
+	return await client.delete(`Item/deleteItem/${id}`)
+}
