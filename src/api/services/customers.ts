@@ -1,4 +1,5 @@
 import { client } from '@api/client';
+import { Address } from './addresses';
 
 export interface Customer {
 	/**
@@ -14,7 +15,7 @@ export interface Customer {
 	/**
 	 * Адресс покупателя.
 	 */
-	address: string;
+	address: Address;
 }
 
 export const getAllCustomers = async () => {

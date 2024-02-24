@@ -1,6 +1,6 @@
 import { client } from '@api/client';
 
-interface Address{
+export interface Address{
     id: number;
     index: number;
     country: string;

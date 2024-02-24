@@ -1,11 +1,12 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import classNames from 'classnames';
 
-import { DownArrowIcon } from '../../icons/DownArrowIcon';
+import { DownArrowIcon } from '../../../icons/DownArrowIcon';
 
 import { DataChangeModal } from '@components/DataChangeModal';
 
-import './style.scss';
+import '../style.scss';
+import { useDeleteItem } from '@hooks/useDeleteItem';
 
 interface DataCardProps {
 	/**
@@ -14,13 +15,10 @@ interface DataCardProps {
 	data: object;
 }
 
-export const DataCard: React.FC<DataCardProps> = ({ data }) => {
+export const ItemDataCard: React.FC<DataCardProps> = ({ data }) => {
 	const [isOpen, setIsOpen] = useState(false);
 	const [isChangeModalActive, setIsChangeModalActive] = useState(false);
-
-	useEffect(() => {
-		console.log(Object.entries(data))
-	},[])
+    const deleteItem = useDeleteItem(data.id)
 
 	const dataCardClass = classNames({
 		'data-card': true,
@@ -38,7 +36,7 @@ export const DataCard: React.FC<DataCardProps> = ({ data }) => {
 				))}
 				<div className="data-card__buttons">
 					<p className="data-card__change-button" onClick={() => setIsChangeModalActive(true)}>Редактировать</p>
-					<p className="data-card__change-button" onClick={() => setIsChangeModalActive(true)}>Удалить</p>
+                    <p className="data-card__change-button" onClick={() => deleteItem.mutate(data.id)}>Удалить</p>
 				</div>
 			</div>
 			<DownArrowIcon style={isOpen ? { transform: 'rotate(180deg)' } : {}} onClick={() => setIsOpen(!isOpen)} />

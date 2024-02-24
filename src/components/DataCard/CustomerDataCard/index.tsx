@@ -1,7 +1,7 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import classNames from 'classnames';
 
-import { DownArrowIcon } from '../../icons/DownArrowIcon';
+import { DownArrowIcon } from '../../../icons/DownArrowIcon';
 
 import { DataChangeModal } from '@components/DataChangeModal';
 
@@ -14,13 +14,9 @@ interface DataCardProps {
 	data: object;
 }
 
-export const DataCard: React.FC<DataCardProps> = ({ data }) => {
+export const CustomerDataCard: React.FC<DataCardProps> = ({ data }) => {
 	const [isOpen, setIsOpen] = useState(false);
 	const [isChangeModalActive, setIsChangeModalActive] = useState(false);
-
-	useEffect(() => {
-		console.log(Object.entries(data))
-	},[])
 
 	const dataCardClass = classNames({
 		'data-card': true,

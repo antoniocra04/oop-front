@@ -29,6 +29,7 @@
 	display: flex;
 	flex-direction: column;
 	align-items: start;
+	width: 100%;
 }
 
 .info__field {
@@ -59,4 +60,9 @@
 	margin-top: 20px;
 	margin-bottom: 0;
 	cursor: pointer;
+}
+
+.data-card__buttons{
+	display: flex;
+	column-gap: 20px;
 }

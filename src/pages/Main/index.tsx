@@ -15,6 +15,7 @@ import { getAllCustomers } from '@api/services/customers';
 
 
 import './style.scss';
+import { ItemDataCard } from '@components/DataCard/ItemDataCard';
 
 const tabs = [
 	{ title: 'Items', content: <ItemsForm /> },
@@ -37,7 +38,16 @@ export const MainPage: React.FC = () => {
 			dispatch(setActiveTab(e.currentTarget.innerText))
 		}
 		if (e.currentTarget.innerText == 'Customers' && queries[1].isSuccess) {
-			dispatch(setObjects(queries[1].data?.data));
+			const data = queries[1].data.data
+			data.forEach(e => {
+				for (const prop in e.address){
+					if(prop != "id"){
+						e[prop] = e.address[prop]
+					}
+				}
+				delete e.address
+			})
+			dispatch(setObjects(data));
 			dispatch(setActiveTab(e.currentTarget.innerText))
 		}
 
@@ -57,7 +67,7 @@ export const MainPage: React.FC = () => {
 				</div>
 				<div className="main__data-container">
 					{objects.objectList.map((object) => (
-						<DataCard data={object} />
+						<ItemDataCard data={object} />
 					))}
 				</div>
 			</div>
