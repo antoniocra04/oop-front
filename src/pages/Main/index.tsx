@@ -3,24 +3,15 @@ import { useEffect } from 'react';
 
 import { PageLayout } from '@components/PageLayout';
 import { Tabs } from '@components/Tabs';
-import { ItemsForm } from '@forms/ItemsForm';
-import { CustomerForm } from '@forms/CustomerForm';
-import { DataCard } from '@components/DataCard';
 
-import { useAppDispatch, useAppSelector } from '@store/hooks/hooks';
+import { useAppDispatch } from '@store/hooks/hooks';
 import { setActiveTab, setObjects } from '@store/data/dataSlice';
 
 import { getAllItems } from '@api/services/items';
 import { getAllCustomers } from '@api/services/customers';
 
-
 import './style.scss';
-import { ItemDataCard } from '@components/DataCard/ItemDataCard';
-
-const tabs = [
-	{ title: 'Items', content: <ItemsForm /> },
-	{ title: 'Customers', content: <CustomerForm /> },
-];
+import { useTabs } from '@hooks/useTabs';
 
 export const MainPage: React.FC = () => {
 	const queries = useQueries({
@@ -29,46 +20,44 @@ export const MainPage: React.FC = () => {
 			{ queryKey: ['customers'], queryFn: getAllCustomers },
 		],
 	});
-	const objects = useAppSelector((state) => state.data);
 	const dispatch = useAppDispatch();
+	const tabs = useTabs();
 
 	const onTabClick = (e: React.MouseEvent<HTMLButtonElement>) => {
 		if (e.currentTarget.innerText == 'Items' && queries[0].isSuccess) {
 			dispatch(setObjects(queries[0].data?.data));
-			dispatch(setActiveTab(e.currentTarget.innerText))
+			dispatch(setActiveTab(e.currentTarget.innerText));
 		}
 		if (e.currentTarget.innerText == 'Customers' && queries[1].isSuccess) {
-			const data = queries[1].data.data
-			data.forEach(e => {
-				for (const prop in e.address){
-					if(prop != "id"){
-						e[prop] = e.address[prop]
+			const data = queries[1].data.data;
+			data.forEach((e) => {
+				for (const prop in e.address) {
+					if (prop != 'id') {
+						// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+						//@ts-ignore
+						e[prop] = e.address[prop];
 					}
 				}
-				delete e.address
-			})
+				// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+				//@ts-ignore
+				delete e.address;
+			});
 			dispatch(setObjects(data));
-			dispatch(setActiveTab(e.currentTarget.innerText))
+			dispatch(setActiveTab(e.currentTarget.innerText));
 		}
-
 	};
 
 	useEffect(() => {
 		getAllItems().then((res) => {
 			dispatch(setObjects(res.data));
-		});		
+		});
 	}, []);
 
 	return (
 		<PageLayout>
 			<div className="main">
-				<div className="">
+				<div className="main-container">
 					<Tabs onClick={onTabClick} data={tabs} />
-				</div>
-				<div className="main__data-container">
-					{objects.objectList.map((object) => (
-						<ItemDataCard data={object} />
-					))}
 				</div>
 			</div>
 		</PageLayout>

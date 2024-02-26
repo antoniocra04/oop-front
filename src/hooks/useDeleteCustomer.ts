@@ -1,0 +1,21 @@
+import { deleteCustomer, getAllCustomers } from "@api/services/customers";
+import { useAppDispatch } from "@store/hooks/hooks";
+import { useQuery, useMutation } from "@tanstack/react-query";
+import { setObjects } from '@store/data/dataSlice';
+
+export const useDeleteCustomer = () => {
+    const dispatch = useAppDispatch();
+	const customers = useQuery({ queryKey: ['customers'], queryFn: getAllCustomers, enabled: false });
+	const deleteCustomerMutation = useMutation({
+		mutationFn: (id: number) => deleteCustomer(id),
+		onSuccess: () => {
+			customers.refetch().then((res) => {
+				// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+				//@ts-ignore
+				dispatch(setObjects(res.data?.data));
+			});
+		},
+	});
+
+    return deleteCustomerMutation;
+}

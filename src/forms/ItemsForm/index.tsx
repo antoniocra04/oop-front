@@ -5,7 +5,7 @@ import { Button } from '@ui/Button';
 import { useCreateItem } from '@hooks/useCreateItem';
 
 export const ItemsForm: React.FC = () => {
-	const createNewItem = useCreateItem()
+	const createNewItem = useCreateItem();
 
 	const formik = useFormik({
 		initialValues: {

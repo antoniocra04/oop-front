@@ -5,18 +5,20 @@ import { DownArrowIcon } from '../../../icons/DownArrowIcon';
 
 import { DataChangeModal } from '@components/DataChangeModal';
 
-import './style.scss';
+import '../style.scss';
+import { useDeleteCustomer } from '@hooks/useDeleteCustomer';
 
 interface DataCardProps {
 	/**
-    * Обьект содержащий поля обьекта.
-    */
+	 * Обьект содержащий поля обьекта.
+	 */
 	data: object;
 }
 
 export const CustomerDataCard: React.FC<DataCardProps> = ({ data }) => {
 	const [isOpen, setIsOpen] = useState(false);
 	const [isChangeModalActive, setIsChangeModalActive] = useState(false);
+	const deleteCustomer = useDeleteCustomer();
 
 	const dataCardClass = classNames({
 		'data-card': true,
@@ -33,15 +35,16 @@ export const CustomerDataCard: React.FC<DataCardProps> = ({ data }) => {
 					</div>
 				))}
 				<div className="data-card__buttons">
-					<p className="data-card__change-button" onClick={() => setIsChangeModalActive(true)}>Редактировать</p>
-					<p className="data-card__change-button" onClick={() => setIsChangeModalActive(true)}>Удалить</p>
+					<p className="data-card__change-button" onClick={() => setIsChangeModalActive(true)}>
+						Редактировать
+					</p>
+					<p className="data-card__change-button" onClick={() => deleteCustomer.mutate(data.id)}>
+						Удалить
+					</p>
 				</div>
 			</div>
 			<DownArrowIcon style={isOpen ? { transform: 'rotate(180deg)' } : {}} onClick={() => setIsOpen(!isOpen)} />
-			{
-				isChangeModalActive ? <DataChangeModal data={data} setActive={setIsChangeModalActive} /> : ''
-			}
-
+			{isChangeModalActive ? <DataChangeModal data={data} setActive={setIsChangeModalActive} /> : ''}
 		</div>
 	);
 };

@@ -7,15 +7,15 @@ import { useCreateCustomer } from '@hooks/useCreateCustomer';
 import '../style.scss';
 
 export const CustomerForm: React.FC = () => {
-	const createNewCustomer = useCreateCustomer()
-  
+	const createNewCustomer = useCreateCustomer();
+
 	const formik = useFormik({
 		initialValues: {
 			fullname: '',
 			address: '',
 		},
 		onSubmit: (values) => {
-			createNewCustomer.mutate(values)
+			createNewCustomer.mutate(values);
 		},
 	});
 

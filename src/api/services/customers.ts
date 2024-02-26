@@ -27,9 +27,9 @@ export const createCustomer = async (values: { fullname: string; address: string
 };
 
 export const changeCustomer = async (values: Customer) => {
-	return await client.put<Customer>(`customer/changeCustomer/${values.id}`, values)
-}
+	return await client.put<Customer>(`customer/changeCustomer/${values.id}`, values);
+};
 
 export const deleteCustomer = async (id: number) => {
-	return await client.delete(`customer/deleteCustomer/${id}`)
-}
+	return await client.delete(`customer/deleteCustomer/${id}`);
+};
