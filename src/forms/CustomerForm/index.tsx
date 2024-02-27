@@ -12,7 +12,11 @@ export const CustomerForm: React.FC = () => {
 	const formik = useFormik({
 		initialValues: {
 			fullname: '',
-			address: '',
+			index: '',
+			country: '',
+			city: '',
+			building: '',
+			apartment: ''
 		},
 		onSubmit: (values) => {
 			createNewCustomer.mutate(values);
@@ -28,10 +32,34 @@ export const CustomerForm: React.FC = () => {
 				<Input id="fullname" name="fullname" onChange={formik.handleChange} value={formik.values.fullname} />
 			</div>
 			<div className="items-form__input-container">
-				<label htmlFor="address" className="input-container__label">
-					Address
+				<label htmlFor="index" className="input-container__label">
+					Index
 				</label>
-				<Input id="address" name="address" onChange={formik.handleChange} value={formik.values.address} />
+				<Input id="index" name="index" onChange={formik.handleChange} value={formik.values.index} />
+			</div>
+			<div className="items-form__input-container">
+				<label htmlFor="country" className="input-container__label">
+					Country
+				</label>
+				<Input id="country" name="country" onChange={formik.handleChange} value={formik.values.country} />
+			</div>
+			<div className="items-form__input-container">
+				<label htmlFor="city" className="input-container__label">
+					City
+				</label>
+				<Input id="city" name="city" onChange={formik.handleChange} value={formik.values.city} />
+			</div>
+			<div className="items-form__input-container">
+				<label htmlFor="building" className="input-container__label">
+					Building
+				</label>
+				<Input id="building" name="building" onChange={formik.handleChange} value={formik.values.building} />
+			</div>
+			<div className="items-form__input-container">
+				<label htmlFor="apartment" className="input-container__label">
+					Apartment
+				</label>
+				<Input id="apartment" name="apartment" onChange={formik.handleChange} value={formik.values.apartment} />
 			</div>
 			<Button type="submit">Создать</Button>
 		</form>
