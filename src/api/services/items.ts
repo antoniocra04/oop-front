@@ -1,5 +1,16 @@
 import { client } from '@api/client';
 
+export enum CategoryType{
+	Book,
+	Laptop,
+	Phone,
+	Hardware,
+	Storage,
+	Headphone,
+	Cabel,
+	Fuel
+}
+
 export interface Item {
 	/**
 	 * Id.
@@ -20,6 +31,11 @@ export interface Item {
 	 * Стоимость продукта.
 	 */
 	cost: number;
+
+	/**
+	 * Категория товара
+	 */
+	category: CategoryType;
 }
 
 export const getAllItems = async () => {
