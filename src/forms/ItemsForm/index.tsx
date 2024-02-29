@@ -14,6 +14,7 @@ export const ItemsForm: React.FC = () => {
 			cost: 0,
 			name: '',
 			info: '',
+			category: 'Book',
 		},
 		onSubmit: (values) => {
 			createNewItem.mutate(values);
@@ -44,7 +45,7 @@ export const ItemsForm: React.FC = () => {
 				<label htmlFor="cost" className="input-container__label">
 					Category
 				</label>
-				<Select name="category">
+				<Select value={formik.values.category} onChange={formik.handleChange} onBlur={formik.handleBlur} name="category">
 					{CategoryTypes.map(category => (
 						<option value={category}>{category}</option>
 					))}

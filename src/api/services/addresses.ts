@@ -1,8 +1,8 @@
 import { client } from '@api/client';
 
 export interface Address {
-	id: number;
-	index: number;
+	id?: number;
+	index: string;
 	country: string;
 	city: string;
 	building: string;

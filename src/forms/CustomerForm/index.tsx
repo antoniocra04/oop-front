@@ -5,12 +5,15 @@ import { Input } from '@ui/Input';
 
 import { useCreateCustomer } from '@hooks/useCreateCustomer';
 import '../style.scss';
+import { createCustomerObject } from '../../utils/createCustomerObject';
+import { ParsedCustomer } from '@api/services/customers';
 
 export const CustomerForm: React.FC = () => {
 	const createNewCustomer = useCreateCustomer();
 
 	const formik = useFormik({
 		initialValues: {
+			id: 0,
 			fullname: '',
 			index: '',
 			country: '',
@@ -18,8 +21,8 @@ export const CustomerForm: React.FC = () => {
 			building: '',
 			apartment: ''
 		},
-		onSubmit: (values) => {
-			createNewCustomer.mutate(values);
+		onSubmit: (values: ParsedCustomer) => {
+			createNewCustomer.mutate(createCustomerObject(values));
 		},
 	});
 

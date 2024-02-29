@@ -3,16 +3,25 @@ import classNames from 'classnames';
 
 import { DownArrowIcon } from '../../../icons/DownArrowIcon';
 
-import { DataChangeModal } from '@components/DataChangeModal';
+import { ItemDataChangeModal } from '@components/DataChangeModal/ItemDataChangeModal';
 
 import '../style.scss';
 import { useDeleteItem } from '@hooks/useDeleteItem';
+import { CategoryType } from '@api/services/items';
+
+export interface ItemInitialProps {
+	id: number;
+    cost: number;
+    name: string;
+    info: string;
+    category: CategoryType;
+}
 
 interface DataCardProps {
 	/**
 	 * Обьект содержащий поля обьекта.
 	 */
-	data: object;
+	data: ItemInitialProps;
 }
 
 export const ItemDataCard: React.FC<DataCardProps> = ({ data }) => {
@@ -44,7 +53,7 @@ export const ItemDataCard: React.FC<DataCardProps> = ({ data }) => {
 				</div>
 			</div>
 			<DownArrowIcon style={isOpen ? { transform: 'rotate(180deg)' } : {}} onClick={() => setIsOpen(!isOpen)} />
-			{isChangeModalActive ? <DataChangeModal data={data} setActive={setIsChangeModalActive} /> : ''}
+			{isChangeModalActive ? <ItemDataChangeModal data={data} setActive={setIsChangeModalActive} /> : ''}
 		</div>
 	);
 };

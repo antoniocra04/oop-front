@@ -3,16 +3,27 @@ import classNames from 'classnames';
 
 import { DownArrowIcon } from '../../../icons/DownArrowIcon';
 
-import { DataChangeModal } from '@components/DataChangeModal';
+import { CustomerDataChangeModal } from '@components/DataChangeModal/CustomerDataChangeModal';
 
 import '../style.scss';
 import { useDeleteCustomer } from '@hooks/useDeleteCustomer';
+import { ParsedCustomer } from '@api/services/customers';
+
+export interface CustomerInitialProps {
+	id: number;
+	fullname: string;
+	index: string;
+	country: string;
+	city: string;
+	building: string;
+	apartment: string;
+}
 
 interface DataCardProps {
 	/**
 	 * Обьект содержащий поля обьекта.
 	 */
-	data: object;
+	data: ParsedCustomer;
 }
 
 export const CustomerDataCard: React.FC<DataCardProps> = ({ data }) => {
@@ -44,7 +55,7 @@ export const CustomerDataCard: React.FC<DataCardProps> = ({ data }) => {
 				</div>
 			</div>
 			<DownArrowIcon style={isOpen ? { transform: 'rotate(180deg)' } : {}} onClick={() => setIsOpen(!isOpen)} />
-			{isChangeModalActive ? <DataChangeModal data={data} setActive={setIsChangeModalActive} /> : ''}
+			{isChangeModalActive ? <CustomerDataChangeModal data={data} setActive={setIsChangeModalActive} /> : ''}
 		</div>
 	);
 };

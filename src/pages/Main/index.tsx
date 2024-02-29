@@ -12,6 +12,7 @@ import { getAllCustomers } from '@api/services/customers';
 
 import './style.scss';
 import { useTabs } from '@hooks/useTabs';
+import { parseCustomer } from '../../utils/parseCustomer';
 
 export const MainPage: React.FC = () => {
 	const queries = useQueries({
@@ -29,20 +30,7 @@ export const MainPage: React.FC = () => {
 			dispatch(setActiveTab(e.currentTarget.innerText));
 		}
 		if (e.currentTarget.innerText == 'Customers' && queries[1].isSuccess) {
-			const data = queries[1].data.data;
-			data.forEach((e) => {
-				for (const prop in e.address) {
-					if (prop != 'id') {
-						// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-						//@ts-ignore
-						e[prop] = e.address[prop];
-					}
-				}
-				// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-				//@ts-ignore
-				delete e.address;
-			});
-			dispatch(setObjects(data));
+			dispatch(setObjects(parseCustomer(queries[1].data.data)));
 			dispatch(setActiveTab(e.currentTarget.innerText));
 		}
 	};
