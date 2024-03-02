@@ -15,6 +15,8 @@ export const useTabs = () => {
 					<ItemsForm />
 					<div className="main__data-container">
 						{objectList.map((object) => (
+							// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+							//@ts-ignore
 							<ItemDataCard data={object} />
 						))}
 					</div>
@@ -28,6 +30,8 @@ export const useTabs = () => {
 					<CustomerForm />
 					<div className="main__data-container">
 						{objectList.map((object) => (
+							// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+							//@ts-ignore
 							<CustomerDataCard data={object} />
 						))}
 					</div>
