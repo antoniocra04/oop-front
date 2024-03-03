@@ -18,7 +18,7 @@ export interface Customer {
 	address: Address;
 }
 
-export interface ParsedCustomer extends Record<string, number | string>{
+export interface ParsedCustomer extends Record<string, number | string> {
 	id: number;
 	fullname: string;
 	index: string;

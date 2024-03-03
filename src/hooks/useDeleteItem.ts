@@ -3,6 +3,10 @@ import { setObjects } from '@store/data/dataSlice';
 import { useAppDispatch } from '@store/hooks/hooks';
 import { useMutation, useQuery } from '@tanstack/react-query';
 
+/**
+ * Хук для удаления продукта.
+ * @returns Обьект запроса на удаление продукта.
+ */
 export const useDeleteItem = () => {
 	const dispatch = useAppDispatch();
 	const items = useQuery({ queryKey: ['items'], queryFn: getAllItems, enabled: false });

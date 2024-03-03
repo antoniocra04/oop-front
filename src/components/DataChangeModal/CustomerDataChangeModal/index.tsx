@@ -7,23 +7,13 @@ import { Button } from '@ui/Button';
 
 import { useChangeCustomer } from '@hooks/useChangeCustomer';
 
-import '../style.scss';
 import { createCustomerObject } from '../../../utils/createCustomerObject';
-import { ParsedCustomer } from '@api/services/customers';
 
-interface DataChangeModalProps {
-	/**
-	 * Обьект содержащий поля обьекта.
-	 */
-	data: ParsedCustomer;
+import { CustomerDataChangeModalProps } from '../types';
 
-	/**
-	 * Функция для изменения стейта активности окна.
-	 */
-	setActive: React.Dispatch<React.SetStateAction<boolean>>;
-}
+import '../style.scss';
 
-export const CustomerDataChangeModal: React.FC<DataChangeModalProps> = ({ data, setActive }) => {
+export const CustomerDataChangeModal: React.FC<CustomerDataChangeModalProps> = ({ data, setActive }) => {
 	const changeCustomerMutation = useChangeCustomer();
 
 	const formik = useFormik({

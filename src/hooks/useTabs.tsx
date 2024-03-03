@@ -1,13 +1,17 @@
-import { CustomerDataCard } from "@components/DataCard/CustomerDataCard";
-import { ItemDataCard } from "@components/DataCard/ItemDataCard";
-import { CustomerForm } from "@forms/CustomerForm";
-import { ItemsForm } from "@forms/ItemsForm";
-import { useAppSelector } from "@store/hooks/hooks"
+import { CustomerDataCard } from '@components/DataCard/CustomerDataCard';
+import { ItemDataCard } from '@components/DataCard/ItemDataCard';
+import { CustomerForm } from '@forms/CustomerForm';
+import { ItemsForm } from '@forms/ItemsForm';
+import { useAppSelector } from '@store/hooks/hooks';
 
+/**
+ * Хук для получения массива с табами
+ * @returns Массив табов
+ */
 export const useTabs = () => {
-    const objectList = useAppSelector((state) => state.data.objectList)
+	const objectList = useAppSelector((state) => state.data.objectList);
 
-    const tabs = [
+	const tabs = [
 		{
 			title: 'Items',
 			content: (
@@ -40,5 +44,5 @@ export const useTabs = () => {
 		},
 	];
 
-    return tabs
-}
+	return tabs;
+};

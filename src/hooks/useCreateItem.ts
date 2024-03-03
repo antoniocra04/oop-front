@@ -3,6 +3,10 @@ import { setObjects } from '@store/data/dataSlice';
 import { useAppDispatch, useAppSelector } from '@store/hooks/hooks';
 import { useQueryClient, useMutation } from '@tanstack/react-query';
 
+/**
+ * Хук для создания продукта.
+ * @returns Обьект запроса на создания продукта.
+ */
 export const useCreateItem = () => {
 	const queryClient = useQueryClient();
 	const dispatch = useAppDispatch();

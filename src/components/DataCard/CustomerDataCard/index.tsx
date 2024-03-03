@@ -7,26 +7,9 @@ import { CustomerDataChangeModal } from '@components/DataChangeModal/CustomerDat
 
 import '../style.scss';
 import { useDeleteCustomer } from '@hooks/useDeleteCustomer';
-import { ParsedCustomer } from '@api/services/customers';
+import { CustomerDataCardProps } from '../types';
 
-export interface CustomerInitialProps {
-	id: number;
-	fullname: string;
-	index: string;
-	country: string;
-	city: string;
-	building: string;
-	apartment: string;
-}
-
-interface DataCardProps {
-	/**
-	 * Обьект содержащий поля обьекта.
-	 */
-	data: ParsedCustomer;
-}
-
-export const CustomerDataCard: React.FC<DataCardProps> = ({ data }) => {
+export const CustomerDataCard: React.FC<CustomerDataCardProps> = ({ data }) => {
 	const [isOpen, setIsOpen] = useState(false);
 	const [isChangeModalActive, setIsChangeModalActive] = useState(false);
 	const deleteCustomer = useDeleteCustomer();
@@ -55,7 +38,7 @@ export const CustomerDataCard: React.FC<DataCardProps> = ({ data }) => {
 				</div>
 			</div>
 			<DownArrowIcon style={isOpen ? { transform: 'rotate(180deg)' } : {}} onClick={() => setIsOpen(!isOpen)} />
-			{isChangeModalActive ? <CustomerDataChangeModal data={data} setActive={setIsChangeModalActive} /> : ''}
+			{isChangeModalActive && <CustomerDataChangeModal data={data} setActive={setIsChangeModalActive} />}
 		</div>
 	);
 };

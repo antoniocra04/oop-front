@@ -4,6 +4,10 @@ import { useAppDispatch } from '@store/hooks/hooks';
 import { useMutation, useQuery } from '@tanstack/react-query';
 import { parseCustomer } from '../utils/parseCustomer';
 
+/**
+ * Хук для изменения покупателя.
+ * @returns Обьект запроса на изменение покупателя.
+ */
 export const useChangeCustomer = () => {
 	const dispatch = useAppDispatch();
 	const items = useQuery({ queryKey: ['customer'], queryFn: getAllCustomers, enabled: false });

@@ -1,6 +1,6 @@
 import { client } from '@api/client';
 
-export enum CategoryType{
+export enum CategoryType {
 	Book,
 	Laptop,
 	Phone,
@@ -8,7 +8,7 @@ export enum CategoryType{
 	Storage,
 	Headphone,
 	Cabel,
-	Fuel
+	Fuel,
 }
 
 export interface Item {

@@ -4,6 +4,10 @@ import { useAppDispatch, useAppSelector } from '@store/hooks/hooks';
 import { useQueryClient, useMutation } from '@tanstack/react-query';
 import { parseCustomer } from '../utils/parseCustomer';
 
+/**
+ * Хук для создания покупателя.
+ * @returns Обьект запроса на создания покупателя.
+ */
 export const useCreateCustomer = () => {
 	const queryClient = useQueryClient();
 	const dispatch = useAppDispatch();

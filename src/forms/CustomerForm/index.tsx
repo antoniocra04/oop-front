@@ -19,7 +19,7 @@ export const CustomerForm: React.FC = () => {
 			country: '',
 			city: '',
 			building: '',
-			apartment: ''
+			apartment: '',
 		},
 		onSubmit: (values: ParsedCustomer) => {
 			createNewCustomer.mutate(createCustomerObject(values));
@@ -32,37 +32,37 @@ export const CustomerForm: React.FC = () => {
 				<label htmlFor="fullname" className="input-container__label">
 					Fullname
 				</label>
-				<Input id="fullname" name="fullname" onChange={formik.handleChange} value={formik.values.fullname} />
+				<Input id="fullname" name="fullname" onChange={formik.handleChange} value={formik.values.fullname} required />
 			</div>
 			<div className="items-form__input-container">
 				<label htmlFor="index" className="input-container__label">
 					Index
 				</label>
-				<Input id="index" name="index" onChange={formik.handleChange} value={formik.values.index} />
+				<Input id="index" name="index" onChange={formik.handleChange} value={formik.values.index} required />
 			</div>
 			<div className="items-form__input-container">
 				<label htmlFor="country" className="input-container__label">
 					Country
 				</label>
-				<Input id="country" name="country" onChange={formik.handleChange} value={formik.values.country} />
+				<Input id="country" name="country" onChange={formik.handleChange} value={formik.values.country} required />
 			</div>
 			<div className="items-form__input-container">
 				<label htmlFor="city" className="input-container__label">
 					City
 				</label>
-				<Input id="city" name="city" onChange={formik.handleChange} value={formik.values.city} />
+				<Input id="city" name="city" onChange={formik.handleChange} value={formik.values.city} required />
 			</div>
 			<div className="items-form__input-container">
 				<label htmlFor="building" className="input-container__label">
 					Building
 				</label>
-				<Input id="building" name="building" onChange={formik.handleChange} value={formik.values.building} />
+				<Input id="building" name="building" onChange={formik.handleChange} value={formik.values.building} required />
 			</div>
 			<div className="items-form__input-container">
 				<label htmlFor="apartment" className="input-container__label">
 					Apartment
 				</label>
-				<Input id="apartment" name="apartment" onChange={formik.handleChange} value={formik.values.apartment} />
+				<Input id="apartment" name="apartment" onChange={formik.handleChange} value={formik.values.apartment} required />
 			</div>
 			<Button type="submit">Создать</Button>
 		</form>
