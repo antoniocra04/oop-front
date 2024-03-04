@@ -38,7 +38,7 @@ export const CustomerForm: React.FC = () => {
 				<label htmlFor="index" className="input-container__label">
 					Index
 				</label>
-				<Input id="index" name="index" onChange={formik.handleChange} value={formik.values.index} required />
+				<Input id="index" name="index" onChange={formik.handleChange} value={formik.values.index} maxLength={6} minLength={6} required pattern="[0-9]{6}" />
 			</div>
 			<div className="items-form__input-container">
 				<label htmlFor="country" className="input-container__label">

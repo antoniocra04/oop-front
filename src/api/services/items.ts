@@ -1,5 +1,8 @@
 import { client } from '@api/client';
 
+/**
+ * Категории товара.
+ */
 export enum CategoryType {
 	Book,
 	Laptop,
