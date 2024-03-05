@@ -9,7 +9,7 @@ interface DataState {
 
 const initialState: DataState = {
 	objectList: [],
-	activeTab: "Items"
+	activeTab: 'Items',
 };
 
 export const dataSlice = createSlice({
@@ -20,8 +20,8 @@ export const dataSlice = createSlice({
 			state.objectList = action.payload;
 		},
 		setActiveTab: (state, action: PayloadAction<string>) => {
-			state.activeTab = action.payload
-		}
+			state.activeTab = action.payload;
+		},
 	},
 });
 

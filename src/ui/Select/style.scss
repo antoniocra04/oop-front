@@ -1,0 +1,33 @@
+@import '@constants/colors';
+
+.select {
+	background-color: $light;
+	border-radius: 10px;
+	padding: 10px 15px;
+	border: 1px $medium solid;
+	font-family: 'Medium';
+	font-size: 16px;
+	-webkit-appearance: none;
+	appearance: none;
+	width: 100%;
+
+	&::placeholder {
+		color: $medium;
+	}
+
+	option {
+		font-family: Arial, Helvetica, sans-serif;
+	}
+}
+
+.select-container {
+	position: relative;
+
+	&::after {
+		content: '▼';
+		font-size: 1rem;
+		top: 8px;
+		right: 15px;
+		position: absolute;
+	}
+}

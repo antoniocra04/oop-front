@@ -1,22 +1,20 @@
 import { useState } from 'react';
 import classNames from 'classnames';
 
-import { DownArrowIcon } from '../../icons/DownArrowIcon';
+import { DownArrowIcon } from '../../../icons/DownArrowIcon';
 
-import { DataChangeModal } from '@components/DataChangeModal';
+import { ItemDataChangeModal } from '@components/DataChangeModal/ItemDataChangeModal';
 
-import './style.scss';
+import { useDeleteItem } from '@hooks/useDeleteItem';
 
-interface DataCardProps {
-	/**
-    * Обьект содержащий поля обьекта.
-    */
-	data: object;
-}
+import { ItemDataCardProps } from '../types';
 
-export const DataCard: React.FC<DataCardProps> = ({ data }) => {
+import '../style.scss';
+
+export const ItemDataCard: React.FC<ItemDataCardProps> = ({ data }) => {
 	const [isOpen, setIsOpen] = useState(false);
 	const [isChangeModalActive, setIsChangeModalActive] = useState(false);
+	const deleteItem = useDeleteItem();
 
 	const dataCardClass = classNames({
 		'data-card': true,
@@ -32,13 +30,17 @@ export const DataCard: React.FC<DataCardProps> = ({ data }) => {
 						<p className="field__text">{field[1]}</p>
 					</div>
 				))}
-				<p className="data-card__change-button" onClick={() => setIsChangeModalActive(true)}>Редактировать</p>
+				<div className="data-card__buttons">
+					<p className="data-card__change-button" onClick={() => setIsChangeModalActive(true)}>
+						Редактировать
+					</p>
+					<p className="data-card__change-button" onClick={() => deleteItem.mutate(data.id)}>
+						Удалить
+					</p>
+				</div>
 			</div>
 			<DownArrowIcon style={isOpen ? { transform: 'rotate(180deg)' } : {}} onClick={() => setIsOpen(!isOpen)} />
-			{
-				isChangeModalActive ? <DataChangeModal data={data} setActive={setIsChangeModalActive} /> : ''
-			}
-
+			{isChangeModalActive && <ItemDataChangeModal data={data} setActive={setIsChangeModalActive} />}
 		</div>
 	);
 };

@@ -1,5 +1,19 @@
 import { client } from '@api/client';
 
+/**
+ * Категории товара.
+ */
+export enum CategoryType {
+	Book,
+	Laptop,
+	Phone,
+	Hardware,
+	Storage,
+	Headphone,
+	Cabel,
+	Fuel,
+}
+
 export interface Item {
 	/**
 	 * Id.
@@ -20,6 +34,11 @@ export interface Item {
 	 * Стоимость продукта.
 	 */
 	cost: number;
+
+	/**
+	 * Категория товара
+	 */
+	category: CategoryType;
 }
 
 export const getAllItems = async () => {
@@ -31,5 +50,9 @@ export const createItem = async (values: { name: string; info: string; cost: num
 };
 
 export const changeItem = async (values: Item) => {
-	return await client.put<Item>(`Item/changeItem/${values.id}`, values)
-}
+	return await client.put<Item>(`Item/changeItem/${values.id}`, values);
+};
+
+export const deleteItem = async (id: number) => {
+	return await client.delete(`Item/deleteItem/${id}`);
+};
