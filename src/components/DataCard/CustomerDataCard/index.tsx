@@ -8,6 +8,7 @@ import { CustomerDataChangeModal } from '@components/DataChangeModal/CustomerDat
 import '../style.scss';
 import { useDeleteCustomer } from '@hooks/useDeleteCustomer';
 import { CustomerDataCardProps } from '../types';
+import { Button } from '@ui/Button';
 
 export const CustomerDataCard: React.FC<CustomerDataCardProps> = ({ data }) => {
 	const [isOpen, setIsOpen] = useState(false);
@@ -20,7 +21,7 @@ export const CustomerDataCard: React.FC<CustomerDataCardProps> = ({ data }) => {
 	});
 
 	return (
-		<div style={isOpen ? { height: `${75 + (Object.keys(data).length - 1) * 24}px` } : {}} className={dataCardClass}>
+		<div style={isOpen ? { height: `${130 + (Object.keys(data).length - 1) * 24}px` } : {}} className={dataCardClass}>
 			<div className="data-card__info">
 				{Object.entries(data).map((field, index) => (
 					<div key={index} className="info__field">
@@ -28,6 +29,9 @@ export const CustomerDataCard: React.FC<CustomerDataCardProps> = ({ data }) => {
 						<p className="field__text">{field[1]}</p>
 					</div>
 				))}
+				<div style={{marginTop: "10px"}}>
+					<Button>Создать заказ</Button>
+				</div>
 				<div className="data-card__buttons">
 					<p className="data-card__change-button" onClick={() => setIsChangeModalActive(true)}>
 						Редактировать

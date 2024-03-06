@@ -1,6 +1,66 @@
 import { client } from '@api/client';
 import { Address } from './addresses';
 
+/**
+ * Статус заказа.
+ */
+export enum OrderStatusType{
+
+}
+
+/**
+ * Корзина покупателя
+ */
+export interface Cart{
+	/**
+	 * Id корзины.
+	 */
+	id: number;
+
+	/**
+	 * Продукты в корзине.
+	 */
+	items: number[];
+}
+
+/**
+ * Заказ.
+ */
+export interface Order{
+	/**
+	 * Id корзины.
+	 */
+	id: number;
+
+	/**
+	 * Дата создания заказа.
+	 */
+	createDate: string;
+
+	/**
+	 * Адрес доставки.
+	 */
+	deliveryAddress: string;
+
+	/**
+	 * Товары.
+	 */
+	items: number[];
+
+	/**
+	 * Итоговая стоимость.
+	 */
+	amount: number;
+
+	/**
+	 * Статус заказа.
+	 */
+	orderStatus: OrderStatusType;
+}
+
+/**
+ * Покупатель.
+ */
 export interface Customer {
 	/**
 	 * Id.
@@ -16,6 +76,16 @@ export interface Customer {
 	 * Адресс покупателя.
 	 */
 	address: Address;
+
+	/**
+	 * Корзина покупателя.
+	 */
+	cart: Cart;
+
+	/**
+	 * Заказы покупателя.
+	 */
+	orders: Order[];
 }
 
 export interface ParsedCustomer extends Record<string, number | string> {
@@ -42,4 +112,8 @@ export const changeCustomer = async (values: Customer) => {
 
 export const deleteCustomer = async (id: number) => {
 	return await client.delete(`customer/deleteCustomer/${id}`);
+};
+
+export const createOrder = async (id: number) => {
+	return await client.post(`customer/createOrder`, id);
 };
