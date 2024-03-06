@@ -12,7 +12,6 @@ import { getAllCustomers } from '@api/services/customers';
 
 import './style.scss';
 import { useTabs } from '@hooks/useTabs';
-import { parseCustomer } from '../../utils/parseCustomer';
 
 export const MainPage: React.FC = () => {
 	const queries = useQueries({
@@ -30,7 +29,7 @@ export const MainPage: React.FC = () => {
 			dispatch(setActiveTab(e.currentTarget.innerText));
 		}
 		if (e.currentTarget.innerText == 'Customers' && queries[1].isSuccess) {
-			dispatch(setObjects(parseCustomer(queries[1].data.data)));
+			dispatch(setObjects(queries[1].data.data));
 			dispatch(setActiveTab(e.currentTarget.innerText));
 		}
 	};

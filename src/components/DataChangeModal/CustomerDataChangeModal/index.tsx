@@ -7,8 +7,6 @@ import { Button } from '@ui/Button';
 
 import { useChangeCustomer } from '@hooks/useChangeCustomer';
 
-import { createCustomerObject } from '../../../utils/createCustomerObject';
-
 import { CustomerDataChangeModalProps } from '../types';
 
 import '../style.scss';
@@ -20,7 +18,7 @@ export const CustomerDataChangeModal: React.FC<CustomerDataChangeModalProps> = (
 		enableReinitialize: true,
 		initialValues: data,
 		onSubmit: (values) => {
-			changeCustomerMutation.mutate(createCustomerObject(values));
+			changeCustomerMutation.mutate(values);
 			setActive(false);
 		},
 	});
@@ -33,37 +31,37 @@ export const CustomerDataChangeModal: React.FC<CustomerDataChangeModalProps> = (
 						<label htmlFor="fullname" className="input-container__label">
 							Fullname
 						</label>
-						<Input id="fullname" name="fullname" onChange={formik.handleChange} value={formik.values.fullname} />
+						<Input id="fullname" name="fullname" onChange={formik.handleChange} value={formik.values.fullname} required />
 					</div>
 					<div className="data-change-form__input-container">
 						<label htmlFor="index" className="input-container__label">
 							Index
 						</label>
-						<Input id="index" name="index" onChange={formik.handleChange} value={formik.values.index} />
+						<Input id="index" name="index" onChange={formik.handleChange} value={formik.values.address.index} maxLength={6} minLength={6} required pattern="[0-9]{6}" />
 					</div>
 					<div className="data-change-form__input-container">
 						<label htmlFor="country" className="input-container__label">
 							Country
 						</label>
-						<Input id="country" name="country" onChange={formik.handleChange} value={formik.values.country} />
+						<Input id="country" name="country" onChange={formik.handleChange} value={formik.values.address.country} required />
 					</div>
 					<div className="data-change-form__input-container">
 						<label htmlFor="city" className="input-container__label">
 							City
 						</label>
-						<Input id="city" name="city" onChange={formik.handleChange} value={formik.values.city} />
+						<Input id="city" name="city" onChange={formik.handleChange} value={formik.values.address.city} required />
 					</div>
 					<div className="data-change-form__input-container">
 						<label htmlFor="building" className="input-container__label">
 							Building
 						</label>
-						<Input id="building" name="building" onChange={formik.handleChange} value={formik.values.building} />
+						<Input id="building" name="building" onChange={formik.handleChange} value={formik.values.address.building} required />
 					</div>
 					<div className="data-change-form__input-container">
 						<label htmlFor="apartment" className="input-container__label">
 							Apartment
 						</label>
-						<Input id="apartment" name="apartment" onChange={formik.handleChange} value={formik.values.apartment} />
+						<Input id="apartment" name="apartment" onChange={formik.handleChange} value={formik.values.address.apartment} required />
 					</div>
 					<Button type="submit">Сохранить</Button>
 					<Button onClick={() => setActive(false)}>Отменить</Button>

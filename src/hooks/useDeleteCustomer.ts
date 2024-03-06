@@ -2,7 +2,6 @@ import { deleteCustomer, getAllCustomers } from '@api/services/customers';
 import { useAppDispatch } from '@store/hooks/hooks';
 import { useQuery, useMutation } from '@tanstack/react-query';
 import { setObjects } from '@store/data/dataSlice';
-import { parseCustomer } from '../utils/parseCustomer';
 
 /**
  * Хук для удаления покупателя.
@@ -17,7 +16,7 @@ export const useDeleteCustomer = () => {
 			customers.refetch().then((res: object) => {
 				// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 				//@ts-ignore
-				dispatch(setObjects(parseCustomer(res.data?.data)));
+				dispatch(setObjects(res.data?.data));
 			});
 		},
 	});

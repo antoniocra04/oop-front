@@ -21,14 +21,20 @@ export const CustomerDataCard: React.FC<CustomerDataCardProps> = ({ data }) => {
 	});
 
 	return (
-		<div style={isOpen ? { height: `${130 + (Object.keys(data).length - 1) * 24}px` } : {}} className={dataCardClass}>
+		<div style={isOpen ? { height: `${100 + (Object.keys(data).length - 1) * 24}px` } : {}} className={dataCardClass}>
 			<div className="data-card__info">
-				{Object.entries(data).map((field, index) => (
-					<div key={index} className="info__field">
-						<p className="field__name">{field[0]}:</p>
-						<p className="field__text">{field[1]}</p>
-					</div>
-				))}
+				<div className="info__field">
+					<p className="field__name">Id:</p>
+					<p className="field__text">{data.id}</p>
+				</div>
+				<div className="info__field">
+					<p className="field__name">Имя:</p>
+					<p className="field__text">{data.fullname}</p>
+				</div>
+				<div className="info__field">
+					<p className="field__name">Адрес:</p>
+					<p className="field__text">{`${data.address.index} ${data.address.country} ${data.address.city} ${data.address.building} ${data.address.apartment}`}</p>
+				</div>
 				<div style={{marginTop: "10px"}}>
 					<Button>Создать заказ</Button>
 				</div>

@@ -1,5 +1,5 @@
 import { CategoryType } from '@api/services/items';
-import { ParsedCustomer } from '@api/services/customers';
+import { Customer } from '@api/services/customers';
 
 export interface ItemDataCardProps {
 	/**
@@ -12,7 +12,7 @@ export interface CustomerDataCardProps {
 	/**
 	 * Обьект содержащий поля обьекта.
 	 */
-	data: ParsedCustomer;
+	data: Customer;
 }
 
 export interface ItemInitialProps {

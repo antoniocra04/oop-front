@@ -1,4 +1,4 @@
-import { ParsedCustomer } from "@api/services/customers";
+import { Customer } from "@api/services/customers";
 import { ItemInitialProps } from "@components/DataCard/types";
 
 export interface ItemDataChangeModalProps {
@@ -17,7 +17,7 @@ export interface CustomerDataChangeModalProps {
 	/**
 	 * Обьект содержащий поля обьекта.
 	 */
-	data: ParsedCustomer;
+	data: Customer;
 
 	/**
 	 * Функция для изменения стейта активности окна.
