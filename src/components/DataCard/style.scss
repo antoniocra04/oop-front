@@ -5,7 +5,7 @@
 	border-radius: 10px;
 	padding: 20px;
 	display: flex;
-	width: 290px;
+	width: 390px;
 	justify-content: space-between;
 	align-items: start;
 	overflow: hidden;
@@ -44,12 +44,13 @@
 	color: $primary;
 	margin: 0;
 	font-family: 'Bold';
+	width: fit-content;
 }
 
 .field__text {
 	margin: 0;
 	word-wrap: break-word;
-	width: 180px;
+	width: 250px;
 }
 
 .--open {

@@ -9,10 +9,12 @@ import '../style.scss';
 import { useDeleteCustomer } from '@hooks/useDeleteCustomer';
 import { CustomerDataCardProps } from '../types';
 import { Button } from '@ui/Button';
+import { AddItemModal } from '@components/AddItemModal';
 
 export const CustomerDataCard: React.FC<CustomerDataCardProps> = ({ data }) => {
 	const [isOpen, setIsOpen] = useState(false);
 	const [isChangeModalActive, setIsChangeModalActive] = useState(false);
+	const [isAddItemModalActive, setIsAddItemModalActive] = useState(false);
 	const deleteCustomer = useDeleteCustomer();
 
 	const dataCardClass = classNames({
@@ -21,7 +23,7 @@ export const CustomerDataCard: React.FC<CustomerDataCardProps> = ({ data }) => {
 	});
 
 	return (
-		<div style={isOpen ? { height: `${100 + (Object.keys(data).length - 1) * 24}px` } : {}} className={dataCardClass}>
+		<div style={isOpen ? { height: `${140 + (Object.keys(data).length - 1) * 24}px` } : {}} className={dataCardClass}>
 			<div className="data-card__info">
 				<div className="info__field">
 					<p className="field__name">Id:</p>
@@ -35,7 +37,16 @@ export const CustomerDataCard: React.FC<CustomerDataCardProps> = ({ data }) => {
 					<p className="field__name">Адрес:</p>
 					<p className="field__text">{`${data.address.index} ${data.address.country} ${data.address.city} ${data.address.building} ${data.address.apartment}`}</p>
 				</div>
-				<div style={{marginTop: "10px"}}>
+				<div className="info__field">
+					<p className="field__name">Товары:</p>
+					<p className="field__text">{data.cart.items.toString()}</p>
+				</div>
+				<div className="info__field">
+					<p className="field__name">Заказы:</p>
+					<p className="field__text">{data.orders.toString()}</p>
+				</div>
+				<div style={{marginTop: "10px"}} className="data-card__buttons">
+					<Button onClick={() => setIsAddItemModalActive(true)}>Добавить товар</Button>
 					<Button>Создать заказ</Button>
 				</div>
 				<div className="data-card__buttons">
@@ -49,6 +60,7 @@ export const CustomerDataCard: React.FC<CustomerDataCardProps> = ({ data }) => {
 			</div>
 			<DownArrowIcon style={isOpen ? { transform: 'rotate(180deg)' } : {}} onClick={() => setIsOpen(!isOpen)} />
 			{isChangeModalActive && <CustomerDataChangeModal data={data} setActive={setIsChangeModalActive} />}
+			{isAddItemModalActive && <AddItemModal id={data.id} setActive={setIsAddItemModalActive} />}
 		</div>
 	);
 };

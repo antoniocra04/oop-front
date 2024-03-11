@@ -15,7 +15,7 @@ export interface Cart{
 	/**
 	 * Id корзины.
 	 */
-	id: number;
+	id?: number;
 
 	/**
 	 * Продукты в корзине.
@@ -30,7 +30,7 @@ export interface Order{
 	/**
 	 * Id корзины.
 	 */
-	id: number;
+	id?: number;
 
 	/**
 	 * Дата создания заказа.
@@ -102,7 +102,7 @@ export const getAllCustomers = async () => {
 	return await client.get<Customer[]>('customer/getAllCustomers');
 };
 
-export const createCustomer = async (values: { fullname: string; address: Address }) => {
+export const createCustomer = async (values: { fullname: string; address: Address, cart: Cart, orders: Order[]}) => {
 	return await client.post<Customer>('customer/createCustomer', values);
 };
 
@@ -116,4 +116,12 @@ export const deleteCustomer = async (id: number) => {
 
 export const createOrder = async (id: number) => {
 	return await client.post(`customer/createOrder`, id);
+};
+
+export const addItemInCart = async (id: number, itemId: number) => {
+	return await client.post(`/customer/addItemInCart?id=${id}&itemId=${itemId}`);
+};
+
+export const deleteItemFromCart = async (id: number, itemId: number) => {
+	return await client.post(`/customer/deleteItemFormCart?id=${id}&itemId=${itemId}`);
 };
