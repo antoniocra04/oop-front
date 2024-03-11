@@ -115,7 +115,11 @@ export const deleteCustomer = async (id: number) => {
 };
 
 export const createOrder = async (id: number) => {
-	return await client.post(`customer/createOrder`, id);
+	return await client.post(`customer/createOrder?id=${id}`);
+};
+
+export const deleteOrder = async (id: number, orderId: number) => {
+	return await client.delete(`/customer/deleteOrder?id=${id}&orderId=${orderId}`);
 };
 
 export const addItemInCart = async (id: number, itemId: number) => {

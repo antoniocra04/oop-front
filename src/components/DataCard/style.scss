@@ -53,6 +53,11 @@
 	width: 250px;
 }
 
+.text__interactive{
+	color: $primary;
+	cursor: pointer;
+}
+
 .--open {
 	height: max-content;
 }

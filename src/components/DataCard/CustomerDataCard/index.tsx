@@ -10,11 +10,17 @@ import { useDeleteCustomer } from '@hooks/useDeleteCustomer';
 import { CustomerDataCardProps } from '../types';
 import { Button } from '@ui/Button';
 import { AddItemModal } from '@components/AddItemModal';
+import { useCreateOrder } from '@hooks/useCreateOrder';
+import { OrderModal } from '@components/OrderModal';
+import { Order } from '@api/services/customers';
 
 export const CustomerDataCard: React.FC<CustomerDataCardProps> = ({ data }) => {
 	const [isOpen, setIsOpen] = useState(false);
 	const [isChangeModalActive, setIsChangeModalActive] = useState(false);
 	const [isAddItemModalActive, setIsAddItemModalActive] = useState(false);
+	const [isOrderModalActive, setIsOrderModalActive] = useState(false);
+	const [currentOrder, setCurrentOrder] = useState<Order>()
+	const createOrder = useCreateOrder();
 	const deleteCustomer = useDeleteCustomer();
 
 	const dataCardClass = classNames({
@@ -43,11 +49,15 @@ export const CustomerDataCard: React.FC<CustomerDataCardProps> = ({ data }) => {
 				</div>
 				<div className="info__field">
 					<p className="field__name">Заказы:</p>
-					<p className="field__text">{data.orders.toString()}</p>
+					<p className="field__text">
+						{data.orders.map(order => (
+							<span onClick={() => {setCurrentOrder(order), setIsOrderModalActive(true)}} className='text__interactive'> {order.id}</span>
+						))}
+					</p>
 				</div>
 				<div style={{marginTop: "10px"}} className="data-card__buttons">
 					<Button onClick={() => setIsAddItemModalActive(true)}>Добавить товар</Button>
-					<Button>Создать заказ</Button>
+					<Button onClick={() => createOrder.mutate(data.id)}>Создать заказ</Button>
 				</div>
 				<div className="data-card__buttons">
 					<p className="data-card__change-button" onClick={() => setIsChangeModalActive(true)}>
@@ -61,6 +71,7 @@ export const CustomerDataCard: React.FC<CustomerDataCardProps> = ({ data }) => {
 			<DownArrowIcon style={isOpen ? { transform: 'rotate(180deg)' } : {}} onClick={() => setIsOpen(!isOpen)} />
 			{isChangeModalActive && <CustomerDataChangeModal data={data} setActive={setIsChangeModalActive} />}
 			{isAddItemModalActive && <AddItemModal id={data.id} setActive={setIsAddItemModalActive} />}
+			{isOrderModalActive && <OrderModal id={data.id} order={currentOrder} setActive={setIsOrderModalActive} />}
 		</div>
 	);
 };
