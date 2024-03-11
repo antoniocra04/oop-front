@@ -71,7 +71,7 @@ export const CustomerDataCard: React.FC<CustomerDataCardProps> = ({ data }) => {
 			<DownArrowIcon style={isOpen ? { transform: 'rotate(180deg)' } : {}} onClick={() => setIsOpen(!isOpen)} />
 			{isChangeModalActive && <CustomerDataChangeModal data={data} setActive={setIsChangeModalActive} />}
 			{isAddItemModalActive && <AddItemModal id={data.id} setActive={setIsAddItemModalActive} />}
-			{isOrderModalActive && <OrderModal id={data.id} order={currentOrder} setActive={setIsOrderModalActive} />}
+			{isOrderModalActive && <OrderModal id={data.id} order={currentOrder!} setActive={setIsOrderModalActive} />}
 		</div>
 	);
 };
